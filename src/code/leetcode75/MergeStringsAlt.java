@@ -43,7 +43,58 @@ word1 and word2 consist of lowercase English letters.
 
 
 public class MergeStringsAlt {
-    public String mergeAlternately(String word1, String word2) {
 
+    public static void main(String[] args) {
+        System.out.println(mergeAlternately("abc", "pqr"));
+        System.out.println(mergeAlternately("ab", "pqrs"));
+        System.out.println(mergeAlternately("abcd", "pq"));
+    }
+
+    //Approach 1
+    public static String mergeAlternately(String word1, String word2) {
+        StringBuilder mergedString = new StringBuilder();
+
+
+        int shortestStringLength = Math.min(word1.length(), word2.length());
+        String longestString = word1.length() >= word2.length() ? word1 : word2;
+
+        //uses the length of the shortest string for the loop to match the characters evenly
+        for (int i = 0; i < shortestStringLength; i++) {
+            mergedString.append(word1.charAt(i)).append(word2.charAt(i));
+        }
+
+        //merges the remaining characters from the longest string to the merged string
+        String leftOverString = longestString.substring(shortestStringLength);
+        return mergedString.toString()+leftOverString;
+    }
+
+
+    //Approach 2
+    public static String mergeAlternately2(String word1, String word2) {
+
+        StringBuilder mergedString = new StringBuilder();
+
+        int i = 0, j = 0;
+        // Loop through both strings
+        while (i < word1.length() && j < word2.length()) {
+            mergedString.append(word1.charAt(i));  // Add character from word1
+            mergedString.append(word2.charAt(j));  // Add character from word2
+            i++;
+            j++;
+        }
+
+        // Append the remaining characters from word1, if any
+        while (i < word1.length()) {
+            mergedString.append(word1.charAt(i));
+            i++;
+        }
+
+        // Append the remaining characters from word2, if any
+        while (j < word2.length()) {
+            mergedString.append(word2.charAt(j));
+            j++;
+        }
+
+        return mergedString.toString();
     }
 }
