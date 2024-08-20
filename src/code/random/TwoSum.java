@@ -1,4 +1,4 @@
-package code;
+package code.random;
 
 /* QUESTION COPIED FROM LEETCODE (https://leetcode.com/problems/two-sum/)
 Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
@@ -39,7 +39,6 @@ Follow-up: Can you come up with an algorithm that is less than O(n2) time comple
 
 
 import java.util.Arrays;
-import java.util.stream.IntStream;
 
 class TwoSum {
 
